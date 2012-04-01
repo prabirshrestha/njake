@@ -170,6 +170,31 @@
             });
         };
 
+        task.push = function (opts, callback) {
+            var opt = extend({}, defaults, opts),
+                args = [];
+
+            args.push('push');
+
+            if (!opt._exe) fail('nuget.push failed - _exe required');
+            if (!opt.package) fail('nuget.push failed - package required');
+            args.push(opt.package);
+
+            if (opt.apiKey) args.push(opt.apiKey);
+            if (opt.CreateOnly) args.push('-CreateOnly');
+            if (opt.source) {
+                args.push('-Source');
+                args.push(opt.source);
+            }
+
+            args.push.apply(args, opt._parameters || []);
+
+            exports.exec(opt._exe, args, function (code) {
+                if (code !== 0) fail('nuget.push failed');
+                callback ? callback(code) : complete();
+            });
+        };
+
         task.setDefaults = function (opts) {
             extend(defaults, opts);
             return defaults;
