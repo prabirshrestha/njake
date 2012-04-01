@@ -50,7 +50,7 @@ task('test', ['build'], function () {
 var njake = require('./njake'),
     nunit = njake.nunit;
     
-xunit.setDefaults({
+nunit.setDefaults({
 	_exe: 'Tools/nunit/nunit-console.x86'
 })
 
