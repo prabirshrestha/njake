@@ -65,3 +65,35 @@ task('nuget', ['build'], function () {
 }, { async: true })
 
 ```
+
+### assymblyinfo
+
+```js
+var njake = require('./njake'),
+    assemblyinfo = njake.assemblyinfo;
+    
+task('assemblyinfo', function () {
+	assemblyinfo({
+		file: 'Source/Facebook/Properties/AssemblyInfo.cs',
+		language: 'c#',
+		namespaces: ['System.Reflection', 'System.Runtime.InteropServices'],
+		assembly: {
+			notice: function () {
+				return '// Do not modify this file manually, use jakefile instead.\r\n';
+			},
+			AssemblyTitle: 'MyApp',
+			AssemblyDescription: 'My App Decription',
+			AssemblyCompany: 'Prabir Shrestha',
+			AssemblyProduct: 'My App',
+			AssemblyCopyright: 'Copyright (c) 2012, Prabir Shrestha.',
+			ComVisible: false,
+			AssemblyVersion: '6.0.10.0',
+			AssemblyFileVersion: '6.0.10.0'
+		}
+	})
+}, { async: true })
+```
+
+*Note: Default language is 'c#' and can be ommited. `System.Reflection` and `System.Runtime.InteropServices` are
+added by default which is also optional. `assembly` can contain a value containg function which returns string. This will
+allow you to write your custom code which may not be supported by assemblyinfo.*
