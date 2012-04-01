@@ -1,9 +1,9 @@
 (function () {
 
-    var
+    var 
         spawn = require('child_process').spawn,
-	path = require('path'),
-	fs = require('fs');
+        path = require('path'),
+        fs = require('fs');
 
     var extend = function (obj) {
         var args = Array.prototype.slice.call(arguments);
@@ -29,7 +29,7 @@
 
         var task = function (opts, callback) {
             var opt = extend({}, defaults, opts),
-				args = [];
+                args = [];
 
             if (!opt.file) fail('msbuild failed - file required');
 
@@ -71,7 +71,7 @@
 
         var task = function (opts, callback) {
             var opt = extend({}, defaults, opts),
-				args = [];
+                args = [];
 
             if (!opt._exe) fail('xunit failed - _exe required');
             if (!opt.assembly) fail('xunit failed - assembly required');
@@ -105,7 +105,7 @@
 
         task.pack = function (opts, callback) {
             var opt = extend({}, defaults, opts),
-				args = [];
+                args = [];
 
             args.push('pack');
 
@@ -159,8 +159,8 @@
 
         var task = function (opts, callback) {
             var opt = extend({}, defaults, opts),
-				contents = '',
-				assemblyValue;
+                contents = '',
+                assemblyValue;
 
             if (!opt.file) fail('assemblyinfo failed - file required');
             if (!opt.language) fail('assemblyinfo failed - language required');
@@ -237,9 +237,9 @@
         }
 
         var netFrameworkPath = exports.getWinDir() +
-									'Microsoft.Net\\' +
-									exports.dotNetVersionMapper['processor'][processor] + '\\v' +
-									exports.dotNetVersionMapper['version'][version] + '\\';
+                                    'Microsoft.Net\\' +
+                                    exports.dotNetVersionMapper['processor'][processor] + '\\v' +
+                                    exports.dotNetVersionMapper['version'][version] + '\\';
         return netFrameworkPath;
     };
 
