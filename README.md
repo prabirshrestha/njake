@@ -26,3 +26,20 @@ task('build', function() {
 	})
 }, { async: true })
 ```
+
+### xunit.net
+
+```js
+var njake = require('./njake'),
+    xunit = njake.xunit;
+    
+xunit.setDefaults({
+	_exe: 'Tools/xunit/xunit.console.clr4.x86'
+})
+
+task('test', ['build'], function () {
+	xunit({
+		assembly: 'Facebook.Tests.dll'
+	})
+}, { async: true })
+```
