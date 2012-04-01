@@ -43,3 +43,25 @@ task('test', ['build'], function () {
 	})
 }, { async: true })
 ```
+
+### nuget
+
+```js
+var njake = require('./njake'),
+    nuget = njake.nuget;
+    
+nuget.setDefaults({
+	_exe: 'Source/.nuget/NuGet.exe',
+	verbose: true
+})
+
+task('nuget', ['build'], function () {
+	nuget.pack({
+		nuspec: 'Source/Facebook.nuspec',
+		version: '6.0.10.0',
+		properties: { 'owners': 'Prabir Shrestha' },
+		outputDirectory: 'Dist/NuGet'
+	})
+}, { async: true })
+
+```
