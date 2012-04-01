@@ -44,6 +44,23 @@ task('test', ['build'], function () {
 }, { async: true })
 ```
 
+### nunit
+
+```js
+var njake = require('./njake'),
+    nunit = njake.nunit;
+    
+xunit.setDefaults({
+	_exe: 'Tools/nunit/nunit-console.x86'
+})
+
+task('test', ['build'], function () {
+	nunit({
+		assemblies: ['Facebook.Tests.dll']
+	})
+}, { async: true })
+```
+
 ### nuget
 
 ```js
