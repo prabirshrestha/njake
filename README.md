@@ -14,15 +14,15 @@ var njake = require('./njake'),
     msbuild = njake.msbuild;
     
 msbuild.setDefaults({
-  properties: { Configuration: 'Release' },
+	properties: { Configuration: 'Release' },
 	processor : 'x86',
 	version	  : 'net4.0'
 })
     
 task('build', function() {
-  msbuild({
-    file: 'Source/Facebook-Net40.sln',
-    targets: ['Clean', 'Build']
-  })
+	msbuild({
+		file: 'Source/Facebook-Net40.sln',
+		targets: ['Clean', 'Build']
+	})
 }, { async: true })
 ```
