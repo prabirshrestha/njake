@@ -95,6 +95,36 @@
 
     })();
 
+    exports.nunit = (function () {
+
+        var defaults = {};
+
+        var task = function (opts, callback) {
+            var opt = extend({}, defaults, opts),
+                args = [];
+
+            if (!opt._exe) fail('nunit failed - _exe required');
+            if (!opt.assemblies) failed('nunit failed - assemblies required');
+
+            opt.assemblies.forEach(function (assembly) { args.push(assembly); });
+
+            args.push.apply(args, opt._parameters || []);
+
+            exports.exec(opt._exe, args, function (code) {
+                if (code !== 0) fail('nunit failed');
+                callback ? callback(code) : complete();
+            });
+        };
+
+        task.setDefaults = function (opts) {
+            extend(defaults, opts);
+            return defaults;
+        };
+
+        return task;
+
+    })();
+
     exports.nuget = (function () {
 
         var defaults = {
