@@ -182,7 +182,7 @@
 
             if (opt.apiKey) args.push(opt.apiKey);
             if (opt.CreateOnly) args.push('-CreateOnly');
-            if (opt.source) {
+            if (opt.source && opt.source !== '') {
                 args.push('-Source');
                 args.push(opt.source);
             }
@@ -198,6 +198,10 @@
         task.setDefaults = function (opts) {
             extend(defaults, opts);
             return defaults;
+        };
+
+        task.urls = {
+            symbolsource: 'http://nuget.gw.symbolsource.org/Public/NuGet'
         };
 
         return task;
