@@ -4,3 +4,25 @@ njake is a collection of helper tasks for jake (https://github.com/mde/jake). ja
 ## Requirements
 * node.js (http://nodejs.org/#download)
 * `npm install -g jake`
+
+## Api Docs
+
+### msbuild
+
+```js
+var njake = require('./njake'),
+    msbuild = njake.msbuild;
+    
+msbuild.setDefaults({
+  properties: { Configuration: 'Release' },
+	processor : 'x86',
+	version	  : 'net4.0'
+})
+    
+task('build', function() {
+  msbuild({
+    file: 'Source/Facebook-Net40.sln',
+    targets: ['Clean', 'Build']
+  })
+}, { async: true })
+```
