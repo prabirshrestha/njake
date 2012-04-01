@@ -2,8 +2,8 @@
 
     var
         spawn = require('child_process').spawn,
-		path = require('path'),
-		fs = require('fs');
+	path = require('path'),
+	fs = require('fs');
 
     var extend = function (obj) {
         var args = Array.prototype.slice.call(arguments);
