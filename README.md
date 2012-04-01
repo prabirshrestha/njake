@@ -69,15 +69,24 @@ var njake = require('./njake'),
     
 nuget.setDefaults({
 	_exe: 'Source/.nuget/NuGet.exe',
-	verbose: true
+	verbose: true,
+	apiKey: '....'
 })
 
-task('nuget', ['build'], function () {
+task('nuget_pack', ['build'], function () {
 	nuget.pack({
 		nuspec: 'Source/Facebook.nuspec',
 		version: '6.0.10.0',
 		properties: { 'owners': 'Prabir Shrestha' },
 		outputDirectory: 'Dist/NuGet'
+	})
+}, { async: true })
+
+task('nuget_push', ['nuget_pack'], function () {
+	nuget.push({
+		package: 'Facebook.6.0.10.nupkg',
+		// specify source if you want to push to non-default nuget server
+		source: nuget.urls.symbolsource
 	})
 }, { async: true })
 

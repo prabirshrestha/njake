@@ -181,7 +181,7 @@
             args.push(opt.package);
 
             if (opt.apiKey) args.push(opt.apiKey);
-            if (opt.CreateOnly) args.push('-CreateOnly');
+            if (opt.createOnly) args.push('-CreateOnly');
             if (opt.source && opt.source !== '') {
                 args.push('-Source');
                 args.push(opt.source);
