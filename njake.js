@@ -208,7 +208,7 @@
 
     })();
 
-    exports.assemblyinfo = (function () {
+    exports.assemblyInfo = (function () {
         var defaults = {
             language: 'c#',
             namespaces: ['System.Reflection', 'System.Runtime.InteropServices']
@@ -221,8 +221,8 @@
                 contents = '',
                 assemblyValue;
 
-            if (!opt.file) fail('assemblyinfo failed - file required');
-            if (!opt.language) fail('assemblyinfo failed - language required');
+            if (!opt.file) fail('assemblyInfo failed - file required');
+            if (!opt.language) fail('assemblyInfo failed - language required');
 
             if (opt.language === 'c#') {
                 if (opt.namespaces) {
@@ -247,7 +247,7 @@
                 }
                 fs.writeFileSync(opt.file, contents);
             } else {
-                fail('assemblyinfo failed - unsupported language. choose ' + supportedLangagues);
+                fail('assemblyInfo failed - unsupported language. choose ' + supportedLangagues);
             }
 
             callback ? callback(0) : complete();

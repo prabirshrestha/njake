@@ -96,10 +96,10 @@ task('nuget_push', ['nuget_pack'], function () {
 
 ```js
 var njake = require('./njake'),
-    assemblyinfo = njake.assemblyinfo;
+    assemblyInfo = njake.assemblyInfo;
     
 task('assemblyinfo', function () {
-	assemblyinfo({
+	assemblyInfo({
 		file: 'Source/Facebook/Properties/AssemblyInfo.cs',
 		language: 'c#',
 		namespaces: ['System.Reflection', 'System.Runtime.InteropServices'],
