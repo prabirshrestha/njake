@@ -86,7 +86,7 @@ task('nuget_push', ['nuget_pack'], function () {
 	nuget.push({
 		package: 'Facebook.6.0.10.nupkg',
 		// specify source if you want to push to non-default nuget server
-		source: nuget.urls.symbolsource
+		source: nuget.urls.symbolSource
 	})
 }, { async: true })
 
