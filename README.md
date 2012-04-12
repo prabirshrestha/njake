@@ -56,7 +56,12 @@ nunit.setDefaults({
 
 task('test', ['build'], function () {
 	nunit({
-		assemblies: ['Facebook.Tests.dll']
+		assemblies: ['Facebook.Tests.dll'],
+		xml: 'output/Facebook.Tests.nunit.xml',
+		nodots: false,
+		nothread: false,
+		noshadow: false,
+		nologo: false
 	})
 }, { async: true })
 ```
