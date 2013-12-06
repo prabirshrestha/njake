@@ -47,6 +47,8 @@
                 for (var key in opt.properties)
                     args.push('/p:' + key + '=' + opt.properties[key])
             }
+            if(opt.verbosity)
+                args.push('/v:' + opt.verbosity);
 
             args.push.apply(args, opt._parameters || []);
 
